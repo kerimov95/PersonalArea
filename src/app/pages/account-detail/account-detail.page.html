@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="main/tabs/personalaccounts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{lic}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="info">
+        <ion-icon name="newspaper-outline"></ion-icon>
+        <ion-label>Реквизиты</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="meters">
+        <ion-icon name="calculator-outline"></ion-icon>
+        <ion-label>Показания</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="payments">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <ion-label>Оплаты</ion-label>
+      </ion-tab-button>
+      <ion-tab-button tab="accruals">
+        <ion-icon name="receipt-outline"></ion-icon>
+        <ion-label>Начисления</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

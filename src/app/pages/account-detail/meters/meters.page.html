@@ -1,0 +1,73 @@
+<ion-content scrollY="false">
+  <div *ngIf="metersCheck; else meterBar" id="container">
+    <ion-label>Приборы учета отсутствуют</ion-label>
+  </div>
+  <ng-template #meterBar>
+    <div *ngIf="!statusBar; else data">
+      <ion-card>
+        <ion-item-group>
+          <ion-item-divider color="light">
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </ion-item-divider>
+          <ion-card-content>
+            <ion-item lines="none">
+              <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+            </ion-item>
+          </ion-card-content>
+        </ion-item-group>
+      </ion-card>
+
+      <ion-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,12]">
+        <ion-label>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        </ion-label>
+      </ion-item>
+    </div>
+    <ng-template #data>
+      <ion-card>
+        <ion-item lines="none" color="primary">
+          <ion-icon slot="start" name="settings-outline"></ion-icon>
+          <ion-label>
+            Услуга
+          </ion-label>
+        </ion-item>
+        <ion-card-content>
+          <div style="border-bottom: 1px solid silver;">
+            <ion-select (ionChange)="changeService()" [(ngModel)]="currenService">
+              <ion-select-option *ngFor="let item of accountDetail?.dogovors" [value]="item.id">{{item.name}}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <div style="border-bottom: 1px solid silver;">
+            <ion-select (ionChange)="changeMeters()" [(ngModel)]="currentMeter">
+              <ion-select-option *ngFor="let item of meters" [value]="item.id">{{item.number}}</ion-select-option>
+            </ion-select>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngFor="let item of ph">
+          <ion-label>{{item.docdate}}</ion-label>
+          <ion-note>{{item.ph}}</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <form #form="ngForm">
+      <ion-item color="primary" lines="none">
+        <ion-icon slot="start" name="calculator-outline"></ion-icon>
+        <ion-input required type="number" inputmode="numeric" [(ngModel)]="newPh" name="newph"
+          placeholder="Текущие показания"></ion-input>
+        <ion-button fill="outline" color="light" [disabled]="!form.form.valid || statusPh" (click)="setPh()">
+          Сохранить
+        </ion-button>
+      </ion-item>
+    </form>
+  </ion-toolbar>
+</ion-footer>

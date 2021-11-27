@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()" fill="clear">
+        Отмена
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Регистрация</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <form #form="ngForm">
+      <ion-list>
+        <ion-item>
+          <ion-icon color="primary" slot="start" name="person-outline"></ion-icon>
+          <ion-input required minlength="5" inputmode="text" [(ngModel)]="login.login" id="login" name="login"
+            placeholder="Логин не менее 5 символов" type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" slot="start" name="call-outline"></ion-icon>
+          <ion-input required minlength="10" maxlength="10" inputmode="tel" [(ngModel)]="login.phone" id="phone"
+            name="phone" type="tel" placeholder="Телефон без +7"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" slot="start" name="mail-unread-outline"></ion-icon>
+          <ion-input required email type="email" inputmode="email" [(ngModel)]="login.email" id="mail" name="mail"
+            type="email" placeholder="@Mail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" slot="start" name="key-outline"></ion-icon>
+          <ion-input required minlength="8" [(ngModel)]="login.password" id="password" name="password" type="password"
+            placeholder="Пароль не менее 8 символов">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="primary" slot="start"></ion-icon>
+          <ion-input required minlength="8" [(ngModel)]="confirm" id="confirm" name="confirm" type="password"
+            placeholder=" Подтверждение пароля">
+          </ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-button [disabled]="!Confirm || !form.form.valid" (click)="createAccount()" expand="block">
+        Сохранить
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()" expand="block" fill="clear">
+        Отмена
+      </ion-button>
+    </ion-buttons>
+    <ion-title>*Новый платеж</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of serv">
+      <ion-item lines="none" color="primary">
+        <ion-label>{{item.name}}</ion-label>
+        <ion-button color="danger" (click)="delete(item.id)" slot="end">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label color="success">Укажите сумму</ion-label>
+        <ion-input clear-input="true" inputmode="numeric" class="ion-text-right" [(ngModel)]="item.balance"
+          name="balance" type="number">
+        </ion-input>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+  <ion-card>
+    <ion-item color="primary" lines="full">
+      <ion-label>
+        Всего услуг {{getCount}} на сумму {{getTotal}} руб.
+      </ion-label>
+    </ion-item>
+    <ion-button [disabled]="getTotal <= 0" fill="outline" (click)="dismiss(true)" expand="block">
+      Оплатить
+    </ion-button>
+  </ion-card>
+</ion-content>

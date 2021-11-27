@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Учет ЖКХ</string>
+    <string name="title_activity_main">Учет ЖКХ</string>
+    <string name="package_name">com.itdevsoft.personalarea</string>
+    <string name="custom_url_scheme">com.itdevsoft.personalarea</string>
+</resources>

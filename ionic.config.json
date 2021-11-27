@@ -1,0 +1,8 @@
+{
+  "name": "CommunalServicesAccounting",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

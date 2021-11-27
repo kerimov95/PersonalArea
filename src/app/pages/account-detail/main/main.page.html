@@ -1,0 +1,82 @@
+<ion-content>
+  <div *ngIf="!statusBar">
+    <ion-card>
+      <ion-item-group>
+        <ion-item-divider color="light">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-item-divider>
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-item-group>
+    </ion-card>
+    <ion-card>
+      <ion-item-group>
+        <ion-item-divider color="light">
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </ion-item-divider>
+        <ion-card-content>
+          <ion-item lines="none">
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </ion-item>
+        </ion-card-content>
+      </ion-item-group>
+    </ion-card>
+    <ion-card color="light">
+      <ion-card-content>
+        <ion-label>
+          <p style="text-transform: capitalize;">
+            <ion-skeleton-text animated style="width: 90%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="statusBar">
+    <ion-card>
+      <ion-item lines="none" color="primary">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+        <ion-label>
+          Адрес
+        </ion-label>
+      </ion-item>
+      <ion-card-content>
+        <p> {{address}}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none" color="primary">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        <ion-label>
+          Потребитель
+        </ion-label>
+      </ion-item>
+      <ion-card-content>
+        <p> {{Consumer}} </p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-item lines="none" color="{{Balance.color}}">
+        <ion-text>
+          <h6>{{Balance.note}}</h6>
+        </ion-text>
+        <ion-text slot="end">
+          <h3>{{Balance.summa}}</h3>
+        </ion-text>
+        <ion-button color="light" fill="clear" slot="end" (click)="update()">
+          <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+      <ion-button [disabled]="!paymentStatus" (click)="createPayment()" expand="block">
+        <ion-icon slot="start" name="wallet-outline"></ion-icon>
+        Перейти к оплате
+      </ion-button>
+    </ion-card>
+    <ion-button fill="outline" [disabled]="statusReport" style="margin :15px;" (click)="sendReport()" expand="block">
+      <ion-icon slot="start" name="newspaper-outline"></ion-icon>
+      Справка о задолженности
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Профиль</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list>
+      <ion-item>
+        <ion-icon color="primary" slot="start" name="person-outline"></ion-icon>
+        <ion-label>Логин</ion-label>
+        <ion-text color="primary">
+          {{login.username}}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="primary" slot="start" name="mail-unread-outline"></ion-icon>
+        <ion-label>@eMail</ion-label>
+        <ion-text color="primary">
+          {{login.email}}
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-icon color="primary" slot="start" name="call-outline"></ion-icon>
+        <ion-label>Телефон</ion-label>
+        <ion-text color="primary">
+          {{login.phone}}
+        </ion-text>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="logOut()" expand="block" color="danger">
+      Выйти
+    </ion-button>
+  </div>
+</ion-content>

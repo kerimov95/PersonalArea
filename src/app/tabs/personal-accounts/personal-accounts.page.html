@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="addAccount()">
+        Добавить
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Лицевые счета</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="!statusBar">
+    <ion-item *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]">
+      <ion-thumbnail slot="start">
+        <ion-skeleton-text></ion-skeleton-text>
+      </ion-thumbnail>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="statusBar">
+    <ion-item-sliding *ngFor="let item of getAccounts">
+      <ion-item (click)="navigate(item.lic, item.provider.id)">
+        <ion-icon slot="start" color="primary" [name]="item.provider.icon"></ion-icon>
+        <ion-label>
+          <h2>{{item.lic}}</h2>
+          <h3> {{item.provider.name}}</h3>
+          <p>{{item.address}}</p>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="delete(item.id)" color="danger" expandable>
+          Удалить
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
